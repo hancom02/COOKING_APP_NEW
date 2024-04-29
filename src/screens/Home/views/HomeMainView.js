@@ -4,7 +4,7 @@ import { create } from "react-test-renderer";
 const HomeMainView = (props) => {
     const {user, image} = props;
 
-    console.log(image[0]);
+    //console.log(image[0]);
 
     return (
         <View style={styles.container}>
