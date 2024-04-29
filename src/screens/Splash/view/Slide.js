@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
-import { ImageBackground, StyleSheet, Text, View } from 'react-native';
-import { Image } from 'react-native-svg';
+import { ImageBackground, StyleSheet, Text, View, Image} from 'react-native';
+// import { Image } from 'react-native-svg';
 
 const Slide = (props) => {
     const {image, string1, string2} = props
@@ -24,7 +24,7 @@ const Slide = (props) => {
             > 
                 <View style={styles.content}>
                     <View style={styles.subView}>
-                        <Image source={require('../../../assets/Union.svg')}/>
+                        <Image source={require('../../../assets/icons/Union.svg')}/>
                         {/* <SvgUri
                             width="200"
                             height="200"
