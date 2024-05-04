@@ -35,9 +35,7 @@ function CookBookComponent(props) {
                 </ImageBackground>
             </View>
 
-            {/* <View style={styles.contentContainer}>
-                    <Text>Traditional Vietnamese cousine</Text>
-            </View> */}
+            
         </View>
     )
 }
