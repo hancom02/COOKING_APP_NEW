@@ -20,6 +20,7 @@ const HomeContainer = (props) => {
     ]
 
     const homeProps = {
+        navigation,
         user,
         image
     }
