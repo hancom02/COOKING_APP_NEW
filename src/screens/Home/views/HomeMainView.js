@@ -5,12 +5,15 @@ import Swiper from "react-native-swiper";
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { SafeAreaView } from "react-native-safe-area-context";
 import RecipeComponent from "../../../components/RecipeComponent";
+import CategoryComponent from "../../../components/CategoryComponent";
 
 const featured = 'Featured Community Recipes' ;
 const getLotOf = 'Get lots of recipe inspiration form the community';
+const showAllRecipe = "Show All Recipe by Community";
+const category = "Category";
 
 const HomeMainView = (props) => {
-    const {user, image} = props;
+    const {navigation, user, image} = props;
 
     const propsCookbook = {
         name: "Vietnamese Traditional Cuisine",
@@ -57,10 +60,35 @@ const HomeMainView = (props) => {
         reviews_amount: 3,
     }
 
+    const CATEGORYDATA = [
+        {
+            category_name: "Seasonal",
+            image: 'https://images.immediate.co.uk/production/volatile/sites/30/2014/05/Epic-summer-salad-hub-2646e6e.jpg',            
+        },
+        {
+            category_name: "Cakes",
+            image: 'https://cakesbymk.com/wp-content/uploads/2022/11/Template-Size-for-Blog-Photos-8-802x1024.jpg',            
+        },
+        {
+            category_name: "Everyday",
+            image: 'https://cdn.tgdd.vn/2020/07/CookRecipe/Avatar/trung-chien-nuoc-mam-thumbnail.jpg',            
+        },
+        {
+            category_name: "Drinks",
+            image: 'https://www.liquor.com/thmb/_ByJyW_TPQ0W7W2SkX2qMwxoL7o=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/shirley-temple-720x720-primary-e0fa3d9417e94ae18fe5cee2131862fb.jpg',            
+        },
+    ]
+
     //console.log(image[0]);
 
     const handleSwiperIndexChange = (index) => {
         console.log("Chuyển hướng tới detail cookbox index: ", index);
+    }
+    const handleNavDetailRecipe = () => {
+        console.log("NAVIGATE TO DETAIL RECIPE")
+    }
+    const handleNavCommunity = () => {
+        console.log("NAVIGATE TO COMMUNITY");
     }
 
     return (
@@ -112,10 +140,35 @@ const HomeMainView = (props) => {
 
                     <View>
                         {RECIPEDATA.map((item, index) => 
-                            <View key={index} style={{marginBottom: 20}}>
-                                <RecipeComponent {...item}/>
+                            <View key={index} style={{marginBottom: 16}}>
+                                <RecipeComponent 
+                                    {...item}
+                                    handleNavDetailRecipe={handleNavDetailRecipe}
+                                />
                             </View>                     
                         )}
+                    </View>
+
+                    <TouchableOpacity onPress={handleNavCommunity} style={styles.showCommunityContainer}>
+                        <Text style={{color: 'orange', textAlign: 'center'}}>{showAllRecipe}</Text>
+                    </TouchableOpacity>
+                </View>
+
+                {/* CATEGORY */}
+                <View style={styles.categoryContainer}>
+                    <Text style={styles.textCategoryHeader}>{category}</Text>
+
+                    <View style={styles.listCategoryContainer}>
+                        <FlatList 
+                            data={CATEGORYDATA}
+                            renderItem={({item}) => 
+                            <CategoryComponent
+                                category_name={item.category_name}
+                                image={item.image}
+                            />}
+                            horizontal
+                            showsHorizontalScrollIndicator={false}
+                        />
                     </View>
                 </View>
 
@@ -138,8 +191,10 @@ const styles = StyleSheet.create({
     contentContainer: {
         paddingHorizontal: 14,
         paddingVertical: 16,
+        paddingBottom: 63,
         justifyContent: 'flex-start',
         alignItems: 'center',
+        // backgroundColor: 'orange'
     },
     userContainer: {
         flexDirection: 'row',
@@ -198,12 +253,36 @@ const styles = StyleSheet.create({
     textCommunityIntro: {
         // fontSize: 14,
         // fontWeight: '600'
-        marginBottom: 20
+        marginBottom: 26
     },
     communityContainer: {
         width: '100%',
         height: 'auto',
-        marginBottom: 100,
+        marginBottom: 20,
+        // alignItems: 'center'
         // backgroundColor: 'orange'
+    },
+    showCommunityContainer: {
+        height: 30,
+        justifyContent: 'center',
+        // backgroundColor: 'pink',
+    },
+    categoryContainer: {
+        height: 160,
+        width: '100%',
+        // justifyContent: 'flex-start',
+
+        // backgroundColor: 'pink'
+    },
+    textCategoryHeader: {
+        // flex: 1,
+        fontSize: 24,
+        fontWeight: '600', 
+        paddingBottom: 16,
+    },
+    listCategoryContainer: {
+        // flex: 1,
+        height: 150,
+        // backgroundColor: 'white'
     }
 })
