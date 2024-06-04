@@ -9,6 +9,7 @@ const SearchMainView = (props) => {
     return (
         <View style={styles.container}>
             <Text>Search</Text>
+            <Text>Search</Text>
         </View>
     )
 }
