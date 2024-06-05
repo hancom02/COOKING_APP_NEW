@@ -51,7 +51,6 @@ function SplashMainView(props) {
                 dotStyle={styles.dot}
                 activeDotColor='orange'
                 onIndexChanged={handleSwiperIndexChange}
-                //loop={true}
             > 
                
                 <Slide{...slide1Props}/>
