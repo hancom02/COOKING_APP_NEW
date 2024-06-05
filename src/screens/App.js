@@ -17,6 +17,7 @@ import Grocery from './Grocery';
 import Calendar from './Calendar';
 import RecipeAdd from './RecipeAdd';
 import appStyle from '../values/appStyle';
+import Group from './Group';
 
 const Stack = createNativeStackNavigator();
 const BottomTab = createBottomTabNavigator();
@@ -100,7 +101,7 @@ function MyBottomTab() {
           },
         }}
       />
-      <BottomTab.Screen
+      {/* <BottomTab.Screen
         name="RecipeAdd"
         component={RecipeAdd}
         options={{
@@ -125,15 +126,15 @@ function MyBottomTab() {
             );
           },
         }}
-      />
+      /> */}
       <BottomTab.Screen
-        name="Grocery"
-        component={Grocery}
+        name="Group"
+        component={Group}
         options={{
           tabBarIcon: ({focused}) => {
             return (
               <Ionicons
-                name="cart-outline"
+                name="people-outline"
                 size={24}
                 color={focused ? 'orange' : 'black'}
               />
@@ -164,7 +165,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
-        <Stack.Screen name="Splash" component={Splash} />
+        {/* <Stack.Screen name="Splash" component={Splash} /> */}
         <Stack.Screen name="MyBottomTab" component={MyBottomTab} />
       </Stack.Navigator>
     </NavigationContainer>
