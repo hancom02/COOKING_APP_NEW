@@ -12,6 +12,7 @@ import SearchIcon from '../../../assets/icons/search.svg';
 import {ResultComponent} from '../../../components/ResultComponent';
 import {useState} from 'react';
 import {FilterItemComponent} from '../../../components/FilterItemComponent';
+import {HeaderComponent} from '../../../components/HeaderComponent';
 const SearchMainView = props => {
   const {navigation, filters, cookBookDatas} = props;
   const [selectedOptionButton, setSelectedOptionButton] = useState('search');
@@ -23,9 +24,7 @@ const SearchMainView = props => {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
-        <View style={styles.containerHeader}>
-          <Text style={styles.textHeader}>Search</Text>
-        </View>
+        <HeaderComponent title="Search" />
         <View style={styles.containerButton}>
           <TouchableOpacity
             onPress={() => setSelectedOptionButton('search')}
@@ -116,7 +115,7 @@ const styles = StyleSheet.create({
   },
 
   textHeader: {
-    fontSize: 24,
+    fontSize: 26,
     fontFamily: 'Baloo2-Bold',
     marginVertical: 15,
   },
