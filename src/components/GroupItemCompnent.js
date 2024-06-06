@@ -1,7 +1,6 @@
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-
 const GroupItemComponent = props => {
-  const {selectedAction, group} = props;
+  const {navigation, selectedAction, group} = props;
   return (
     <View style={styles.container}>
       <Image
@@ -19,7 +18,9 @@ const GroupItemComponent = props => {
         <Text style={styles.textNumber}>{group.nember} Members</Text>
       </View>
       <View>
-        <TouchableOpacity style={styles.joinButton}>
+        <TouchableOpacity
+          style={styles.joinButton}
+          onPress={() => navigation.navigate('DetailGroup')}>
           <Text style={styles.textJoinButton}>
             {selectedAction === 'discover' ? 'Join' : 'See detail'}
           </Text>

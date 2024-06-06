@@ -1,10 +1,21 @@
 import HeartIcon from '../assets/icons/heart.svg';
 import StarIcon from '../assets/icons/star.svg';
-const {View, Image, Text, StyleSheet} = require('react-native');
+import CommentIcon from '../assets/icons/comment.svg';
+import HeartNotActiveIcon from '../assets/icons/heart_not_active.svg';
+import {useState} from 'react';
+const {
+  View,
+  Image,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+} = require('react-native');
 
 export const ProfileCardComponent = props => {
   const t = 1;
-  const {profile} = props;
+  const {profile, isManager} = props;
+
+  const [sendedHeart, setSendedHeart] = useState(false);
   return (
     <View style={styles.container}>
       <View style={styles.containerAvt}>
@@ -13,17 +24,21 @@ export const ProfileCardComponent = props => {
           source={{
             uri: profile.image,
           }}
+          height={48}
+          width={48}
         />
       </View>
 
-      <View
-        style={{
-          borderWidth: 1,
-          borderColor: '#5D59591A',
-          marginHorizontal: 10,
-        }}></View>
+      {!isManager && (
+        <View
+          style={{
+            borderWidth: 1,
+            borderColor: '#5D59591A',
+            marginHorizontal: 10,
+          }}></View>
+      )}
 
-      <View style={styles.containerContent}>
+      <View style={[styles.containerContent, isManager && {marginLeft: 20}]}>
         <View>
           <Text style={styles.textName}>{profile.name} </Text>
         </View>
@@ -32,16 +47,56 @@ export const ProfileCardComponent = props => {
             <HeartIcon style={styles.icon} />
             <Text style={styles.textTracking}>{profile.tracking.heart}</Text>
           </View>
+          {isManager && (
+            <View
+              style={{
+                width: 3,
+                height: 3,
+                backgroundColor: '#636773',
+                borderRadius: 100,
+              }}></View>
+          )}
+
           <View style={styles.valueTracking}>
             <StarIcon style={styles.icon} />
             <Text style={styles.textTracking}>{profile.tracking.star}</Text>
           </View>
-          <View style={styles.valueTracking}>
-            <Text style={styles.textTracking}>{profile.tracking.review} </Text>
-            <Text style={styles.textTracking}>Reviews</Text>
-          </View>
+
+          {isManager && (
+            <View
+              style={{
+                width: 3,
+                height: 3,
+                backgroundColor: '#636773',
+                borderRadius: 100,
+              }}></View>
+          )}
+
+          {isManager ? (
+            <View style={styles.valueTracking}>
+              <CommentIcon style={styles.icon} />
+              <Text style={styles.textTracking}>{profile.tracking.star}</Text>
+            </View>
+          ) : (
+            <View style={styles.valueTracking}>
+              <Text style={styles.textTracking}>
+                {profile.tracking.review}{' '}
+              </Text>
+              <Text style={styles.textTracking}>Reviews</Text>
+            </View>
+          )}
         </View>
       </View>
+
+      <TouchableOpacity
+        style={styles.sendHeart}
+        onPress={() => setSendedHeart(!sendedHeart)}>
+        {sendedHeart ? (
+          <HeartIcon width="24" height="24" />
+        ) : (
+          <HeartNotActiveIcon />
+        )}
+      </TouchableOpacity>
     </View>
   );
 };
@@ -51,9 +106,6 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingHorizontal: 16,
-
-    width: '100%',
   },
 
   containerAvt: {
@@ -85,11 +137,11 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    width: '100%',
+    alignItems: 'center',
+    marginTop: 4,
   },
 
   valueTracking: {
-    marginTop: 16,
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
@@ -104,5 +156,10 @@ const styles = StyleSheet.create({
     fontWeight: '300',
     fontSize: 18,
     fontFamily: 'Baloo2-Regular',
+  },
+
+  sendHeart: {
+    justifyContent: 'center',
+    marginLeft: 60,
   },
 });
