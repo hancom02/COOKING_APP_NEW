@@ -22,13 +22,13 @@ const DetailGroupMainView = props => {
   };
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView style={{marginHorizontal: 16}}>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <HeaderNavigationComponent
           navigation={navigation}
           joinedGroup={joinedGroup}
           handleManager={handleManager}
         />
-        <View>
+        <View style={{marginHorizontal: 16}}>
           <View style={styles.containerHeaderInfo}>
             <Image
               source={{
@@ -49,7 +49,6 @@ const DetailGroupMainView = props => {
               flexDirection: 'row',
               justifyContent: 'space-between',
               alignItems: 'center',
-              marginHorizontal: 16,
             }}>
             <Text style={styles.nameGroup}>Group for diet food</Text>
             {isManager && (
@@ -81,17 +80,17 @@ const DetailGroupMainView = props => {
           )}
 
           <View style={styles.line}></View>
-        </View>
-        <View style={styles.containerResult}>
-          {cookBookDatas &&
-            cookBookDatas.map(cookBook => (
-              <ResultComponent
-                navigation={navigation}
-                key={cookBook.id}
-                cookBook={cookBook}
-                isManager={isManager}
-              />
-            ))}
+          <View style={styles.containerResult}>
+            {cookBookDatas &&
+              cookBookDatas.map(cookBook => (
+                <ResultComponent
+                  navigation={navigation}
+                  key={cookBook.id}
+                  cookBook={cookBook}
+                  isManager={isManager}
+                />
+              ))}
+          </View>
         </View>
       </ScrollView>
     </SafeAreaView>

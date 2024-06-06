@@ -21,7 +21,9 @@ export const ResultComponent = props => {
         )}
       </View>
       <View style={styles.containerTitle}>
-        <Text style={styles.title}>{cookBook.name}</Text>
+        <Text numberOfLines={2} style={styles.title}>
+          {cookBook.name}
+        </Text>
       </View>
 
       <ProfileCardComponent
