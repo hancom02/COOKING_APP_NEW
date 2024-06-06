@@ -12,8 +12,8 @@ import SearchIcon from '../../../assets/icons/search.svg';
 import {ResultComponent} from '../../../components/ResultComponent';
 import {useState} from 'react';
 import {FilterItemComponent} from '../../../components/FilterItemComponent';
-import {HeaderComponent} from '../../../components/HeaderComponent';
-const SearchMainView = props => {
+import HeaderNavigationComponent from '../../../components/header/HeaderNavigationComponent';
+const SearchGroupMainView = props => {
   const {navigation, filters, cookBookDatas} = props;
   const [selectedOptionButton, setSelectedOptionButton] = useState('search');
   const [selectedIdFilter, setSelectedIdFilter] = useState(1);
@@ -24,7 +24,10 @@ const SearchMainView = props => {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.conent}>
-        <HeaderComponent title="Search" />
+        <HeaderNavigationComponent
+          navigation={navigation}
+          name="Search in group"
+        />
         <View style={styles.containerButton}>
           <TouchableOpacity
             onPress={() => setSelectedOptionButton('search')}
@@ -189,4 +192,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SearchMainView;
+export default SearchGroupMainView;

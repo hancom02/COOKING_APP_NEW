@@ -8,29 +8,52 @@ const HeaderNavigationComponent = props => {
   return (
     <View style={styles.container}>
       <View style={styles.content}>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
-          <ArrowIcon width="24" height="24" />
+        <TouchableOpacity
+          style={{
+            display: 'flex',
+            justifyContent: 'flex-start',
+            alignSelf: 'center',
+          }}
+          onPress={() => navigation.goBack()}>
+          <ArrowIcon
+            style={{marginHorizontal: -6, borderWidth: 1}}
+            width="24"
+            height="24"
+          />
         </TouchableOpacity>
         {name && <Text style={styles.textHeader}>{name}</Text>}
+
         {joinedGroup ? (
           <View style={styles.containerAction}>
-            <TouchableOpacity
-              onPress={handleManager}
-              style={{marginHorizontal: 12}}>
-              <Text>Chuyển manager</Text>
-            </TouchableOpacity>
+            {handleManager && (
+              <TouchableOpacity onPress={handleManager}>
+                <Text>manager</Text>
+              </TouchableOpacity>
+            )}
             <TouchableOpacity onPress={() => {}}>
               <AddBackIcon width="32" height="32" />
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => {}}>
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate('GroupNember');
+              }}>
               <GroupIcon style={styles.groupIcon} width="32" height="32" />
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => {}}>
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate('SearchInGroup');
+              }}>
               <SearchIcon width="32" height="32" />
             </TouchableOpacity>
           </View>
         ) : (
-          <View></View>
+          <View>
+            {handleManager && (
+              <TouchableOpacity onPress={handleManager}>
+                <Text>manager</Text>
+              </TouchableOpacity>
+            )}
+          </View>
         )}
       </View>
     </View>
@@ -40,7 +63,7 @@ const HeaderNavigationComponent = props => {
 const styles = StyleSheet.create({
   container: {
     height: 64,
-    paddingHorizontal: 16,
+    marginHorizontal: 16,
   },
   content: {
     display: 'flex',
