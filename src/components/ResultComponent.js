@@ -12,7 +12,7 @@ export const ResultComponent = props => {
             uri: cookBook.image,
           }}
           width={400}
-          height={167}
+          height={200}
         />
         {isManager && (
           <TouchableOpacity style={styles.buttonIcon}>
@@ -53,7 +53,6 @@ const styles = StyleSheet.create({
     width: '100%',
     marginBottom: 28,
     backgroundColor: '#FFFFFF',
-    paddingHorizontal: 16,
   },
 
   containerImg: {
@@ -76,7 +75,6 @@ const styles = StyleSheet.create({
   },
   containerTitle: {
     width: '100%',
-    paddingHorizontal: 16,
   },
   title: {
     fontSize: 20,

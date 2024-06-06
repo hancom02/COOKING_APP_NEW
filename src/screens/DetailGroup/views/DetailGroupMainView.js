@@ -22,7 +22,7 @@ const DetailGroupMainView = props => {
   };
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView>
+      <ScrollView style={{marginHorizontal: 16}}>
         <HeaderNavigationComponent
           navigation={navigation}
           joinedGroup={joinedGroup}

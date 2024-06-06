@@ -106,7 +106,6 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingHorizontal: 16,
   },
 
   containerAvt: {
@@ -161,6 +160,6 @@ const styles = StyleSheet.create({
 
   sendHeart: {
     justifyContent: 'center',
-    marginLeft: 35,
+    marginLeft: 60,
   },
 });
