@@ -4,8 +4,7 @@ import AddBackIcon from '../../assets/icons/add-black.svg';
 import GroupIcon from '../../assets/icons/group.svg';
 import SearchIcon from '../../assets/icons/search_alt.svg';
 const HeaderNavigationComponent = props => {
-  const {navigation, name, joinedGroup, onCreateGroup, onGoGroup, onSearch} =
-    props;
+  const {navigation, name, joinedGroup, handleManager} = props;
   return (
     <View style={styles.container}>
       <View style={styles.content}>
@@ -15,13 +14,18 @@ const HeaderNavigationComponent = props => {
         {name && <Text style={styles.textHeader}>{name}</Text>}
         {joinedGroup ? (
           <View style={styles.containerAction}>
-            <TouchableOpacity onPress={onCreateGroup}>
+            <TouchableOpacity
+              onPress={handleManager}
+              style={{marginHorizontal: 12}}>
+              <Text>Chuyển manager</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => {}}>
               <AddBackIcon width="32" height="32" />
             </TouchableOpacity>
-            <TouchableOpacity onPress={onGoGroup}>
+            <TouchableOpacity onPress={() => {}}>
               <GroupIcon style={styles.groupIcon} width="32" height="32" />
             </TouchableOpacity>
-            <TouchableOpacity onPress={onSearch}>
+            <TouchableOpacity onPress={() => {}}>
               <SearchIcon width="32" height="32" />
             </TouchableOpacity>
           </View>

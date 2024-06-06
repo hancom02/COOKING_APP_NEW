@@ -10,50 +10,88 @@ import {
 } from 'react-native';
 import HeaderNavigationComponent from '../../../components/header/HeaderNavigationComponent';
 import {ResultComponent} from '../../../components/ResultComponent';
-
+import EditIcon from '../../../assets/icons/edit.svg';
 const DetailGroupMainView = props => {
   const {navigation, cookBookDatas} = props;
   const [joinedGroup, setJoniedGroup] = useState(true);
+
+  // Chuyển page thoi nha, có gì xóa cũm được
+  const [isManager, setIsManager] = useState(true);
+  const handleManager = () => {
+    setIsManager(!isManager);
+  };
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
         <HeaderNavigationComponent
           navigation={navigation}
           joinedGroup={joinedGroup}
+          handleManager={handleManager}
         />
         <View>
-          <Image
-            source={{
-              uri: 'https://www.englishclub.com/images/vocabulary/food/cooking/cooking.jpg',
-            }}
-            height={174}
-          />
-          <Text style={styles.nameGroup}>Group for diet food</Text>
-          <TouchableOpacity
-            style={[
-              styles.buttonJoinGroup,
-              joinedGroup ? styles.buttonLeaveGroup : '',
-            ]}
-            onPress={() => setJoniedGroup(!joinedGroup)}>
-            <Text
+          <View style={styles.containerHeaderInfo}>
+            <Image
+              source={{
+                uri: 'https://www.englishclub.com/images/vocabulary/food/cooking/cooking.jpg',
+              }}
+              height={174}
+            />
+            {isManager && (
+              <TouchableOpacity style={styles.iconEditHeaderInfo}>
+                <EditIcon width="30" height="30" />
+              </TouchableOpacity>
+            )}
+          </View>
+
+          <View
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              marginHorizontal: 16,
+            }}>
+            <Text style={styles.nameGroup}>Group for diet food</Text>
+            {isManager && (
+              <TouchableOpacity>
+                <EditIcon width="30" height="30" />
+              </TouchableOpacity>
+            )}
+          </View>
+
+          {isManager ? (
+            <TouchableOpacity style={styles.buttonJoinGroup}>
+              <Text style={styles.textButonJoin}>Delete Group</Text>
+            </TouchableOpacity>
+          ) : (
+            <TouchableOpacity
               style={[
-                styles.textButonJoin,
-                joinedGroup ? styles.textButtonLeave : '',
-              ]}>
-              {joinedGroup ? 'Leave Group' : 'Join Group'}
-            </Text>
-          </TouchableOpacity>
+                styles.buttonJoinGroup,
+                joinedGroup ? styles.buttonLeaveGroup : '',
+              ]}
+              onPress={() => setJoniedGroup(!joinedGroup)}>
+              <Text
+                style={[
+                  styles.textButonJoin,
+                  joinedGroup ? styles.textButtonLeave : '',
+                ]}>
+                {joinedGroup ? 'Leave Group' : 'Join Group'}
+              </Text>
+            </TouchableOpacity>
+          )}
 
           <View style={styles.line}></View>
         </View>
         <View style={styles.containerResult}>
-          {cookBookDatas.map(cookBook => (
-            <ResultComponent
-              navigation={navigation}
-              key={cookBook.id}
-              cookBook={cookBook}
-            />
-          ))}
+          {cookBookDatas &&
+            cookBookDatas.map(cookBook => (
+              <ResultComponent
+                navigation={navigation}
+                key={cookBook.id}
+                cookBook={cookBook}
+                isManager={isManager}
+              />
+            ))}
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -66,12 +104,28 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
   },
 
+  containerHeaderInfo: {
+    position: 'relative',
+  },
+
+  iconEditHeaderInfo: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 100,
+    backgroundColor: '#FFFFFF',
+    position: 'absolute',
+    zIndex: 100,
+    width: 40,
+    height: 40,
+    right: 16,
+    bottom: 16,
+  },
   nameGroup: {
     marginVertical: 12,
-    marginHorizontal: 16,
     fontSize: 24,
     fontWeight: '600',
-    fontFamily: 'Baloo2-SemiBold',
+    fontFamily: 'Baloo2-ExtraBold',
   },
 
   buttonJoinGroup: {

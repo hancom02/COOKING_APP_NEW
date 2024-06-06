@@ -19,7 +19,6 @@ import RecipeAdd from './RecipeAdd';
 import appStyle from '../values/appStyle';
 import Group from './Group';
 import DetailGroup from './DetailGroup';
-
 const Stack = createNativeStackNavigator();
 const BottomTab = createBottomTabNavigator();
 
@@ -72,6 +71,21 @@ function MyBottomTab() {
   return (
     <BottomTab.Navigator
       screenOptions={{headerShown: false, tabBarShowLabel: false}}>
+      <BottomTab.Screen
+        name="ManagerDetailGroupView"
+        component={DetailGroup}
+        options={{
+          tabBarIcon: ({focused}) => {
+            return (
+              <Ionicons
+                name="home-outline"
+                size={24}
+                color={focused ? 'orange' : 'black'}
+              />
+            );
+          },
+        }}
+      />
       <BottomTab.Screen
         name="Home"
         component={Home}

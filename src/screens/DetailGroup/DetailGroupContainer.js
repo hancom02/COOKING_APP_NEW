@@ -63,6 +63,7 @@ const DetailGroupContainer = props => {
     navigation,
     cookBookDatas,
   };
+
   return <DetailGroupMainView {...detailGroupProps} />;
 };
 
