@@ -24,6 +24,8 @@ export const ProfileCardComponent = props => {
           source={{
             uri: profile.image,
           }}
+          height={48}
+          width={48}
         />
       </View>
 
@@ -137,7 +139,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginTop: 16,
+    marginTop: 4,
   },
 
   valueTracking: {
@@ -159,5 +161,6 @@ const styles = StyleSheet.create({
 
   sendHeart: {
     justifyContent: 'center',
+    marginLeft: 35,
   },
 });

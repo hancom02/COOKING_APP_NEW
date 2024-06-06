@@ -38,6 +38,7 @@ export const ResultComponent = props => {
             backgroundColor: '#D1D1D1',
             marginHorizontal: 16,
             marginTop: 8,
+            opacity: 0.5,
           }}></View>
       )}
     </View>
