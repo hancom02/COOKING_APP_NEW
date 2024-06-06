@@ -1,8 +1,7 @@
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {ProfileCardComponent} from './ProfileCardComponent';
-
 export const ResultComponent = props => {
-  const {cookBook} = props;
+  const {navigation, cookBook} = props;
   return (
     <View style={styles.container}>
       <Image
@@ -16,7 +15,11 @@ export const ResultComponent = props => {
       <View style={styles.containerTitle}>
         <Text style={styles.title}>{cookBook.name}</Text>
       </View>
-      <ProfileCardComponent profile={cookBook.profile} />
+
+      <ProfileCardComponent
+        navigation={navigation}
+        profile={cookBook.profile}
+      />
     </View>
   );
 };
@@ -26,8 +29,10 @@ const styles = StyleSheet.create({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+    // flexDirection: 'row',
     width: '100%',
     marginBottom: 28,
+    backgroundColor: '#FFFFFF',
   },
 
   img: {

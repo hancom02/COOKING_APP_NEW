@@ -1,10 +1,20 @@
 import HeartIcon from '../assets/icons/heart.svg';
 import StarIcon from '../assets/icons/star.svg';
-const {View, Image, Text, StyleSheet} = require('react-native');
+import HeartNotActiveIcon from '../assets/icons/heart_not_active.svg';
+import {useState} from 'react';
+const {
+  View,
+  Image,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+} = require('react-native');
 
 export const ProfileCardComponent = props => {
   const t = 1;
   const {profile} = props;
+
+  const [sendedHeart, setSendedHeart] = useState(false);
   return (
     <View style={styles.container}>
       <View style={styles.containerAvt}>
@@ -42,6 +52,16 @@ export const ProfileCardComponent = props => {
           </View>
         </View>
       </View>
+
+      <TouchableOpacity
+        style={styles.sendHeart}
+        onPress={() => setSendedHeart(!sendedHeart)}>
+        {sendedHeart ? (
+          <HeartIcon width="24" height="24" />
+        ) : (
+          <HeartNotActiveIcon />
+        )}
+      </TouchableOpacity>
     </View>
   );
 };
@@ -52,8 +72,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingHorizontal: 16,
-
-    width: '100%',
   },
 
   containerAvt: {
@@ -104,5 +122,9 @@ const styles = StyleSheet.create({
     fontWeight: '300',
     fontSize: 18,
     fontFamily: 'Baloo2-Regular',
+  },
+
+  sendHeart: {
+    justifyContent: 'center',
   },
 });

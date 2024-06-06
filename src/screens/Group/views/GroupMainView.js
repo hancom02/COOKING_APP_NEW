@@ -15,6 +15,7 @@ const GroupMainView = props => {
           setSelectedAction={setSelectedAction}
         />
         <ListGroupComponent
+          navigation={navigation}
           selectedAction={selectedAction}
           cookGroups={cookGroups}
         />

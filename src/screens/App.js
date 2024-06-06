@@ -18,6 +18,7 @@ import Calendar from './Calendar';
 import RecipeAdd from './RecipeAdd';
 import appStyle from '../values/appStyle';
 import Group from './Group';
+import DetailGroup from './DetailGroup';
 
 const Stack = createNativeStackNavigator();
 const BottomTab = createBottomTabNavigator();
@@ -167,6 +168,7 @@ export default function App() {
       <Stack.Navigator screenOptions={{headerShown: false}}>
         {/* <Stack.Screen name="Splash" component={Splash} /> */}
         <Stack.Screen name="MyBottomTab" component={MyBottomTab} />
+        <Stack.Screen name="DetailGroup" component={DetailGroup} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -2,7 +2,7 @@ import {StyleSheet, Text, View} from 'react-native';
 import CreateGroupIcon from '../assets/icons/create.svg';
 import GroupItemComponent from './GroupItemCompnent';
 const ListGroupComponent = props => {
-  const {selectedAction, cookGroups} = props;
+  const {navigation, selectedAction, cookGroups} = props;
   const titles = {
     discover: 'Suggest',
     created: 'Groups you created',
@@ -21,6 +21,7 @@ const ListGroupComponent = props => {
       {cookGroups &&
         cookGroups.map(group => (
           <GroupItemComponent
+            navigation={navigation}
             key={group.id}
             group={group}
             selectedAction={selectedAction}
