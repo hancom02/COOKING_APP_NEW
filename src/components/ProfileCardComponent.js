@@ -13,7 +13,10 @@ const {
 
 export const ProfileCardComponent = props => {
   const t = 1;
-  const {profile, isManager} = props;
+  const {
+    profile, 
+    // isManager
+  } = props;
 
   const [sendedHeart, setSendedHeart] = useState(false);
   return (
@@ -29,16 +32,10 @@ export const ProfileCardComponent = props => {
         />
       </View>
 
-      {!isManager && (
-        <View
-          style={{
-            borderWidth: 1,
-            borderColor: '#5D59591A',
-            marginHorizontal: 10,
-          }}></View>
-      )}
+      <View style={[styles.containerContent, 
+        {marginLeft: 12}
 
-      <View style={[styles.containerContent, isManager && {marginLeft: 20}]}>
+      ]}>
         <View>
           <Text style={styles.textName}>{profile.name} </Text>
         </View>
@@ -47,44 +44,32 @@ export const ProfileCardComponent = props => {
             <HeartIcon style={styles.icon} />
             <Text style={styles.textTracking}>{profile.tracking.heart}</Text>
           </View>
-          {isManager && (
             <View
               style={{
                 width: 3,
                 height: 3,
                 backgroundColor: '#636773',
                 borderRadius: 100,
-              }}></View>
-          )}
+              }}>
+            </View>
 
           <View style={styles.valueTracking}>
             <StarIcon style={styles.icon} />
             <Text style={styles.textTracking}>{profile.tracking.star}</Text>
           </View>
 
-          {isManager && (
-            <View
-              style={{
-                width: 3,
-                height: 3,
-                backgroundColor: '#636773',
-                borderRadius: 100,
-              }}></View>
-          )}
+          <View
+            style={{
+              width: 3,
+              height: 3,
+              backgroundColor: '#636773',
+              borderRadius: 100,
+            }}></View>
 
-          {isManager ? (
-            <View style={styles.valueTracking}>
-              <CommentIcon style={styles.icon} />
-              <Text style={styles.textTracking}>{profile.tracking.star}</Text>
-            </View>
-          ) : (
-            <View style={styles.valueTracking}>
-              <Text style={styles.textTracking}>
-                {profile.tracking.review}{' '}
-              </Text>
-              <Text style={styles.textTracking}>Reviews</Text>
-            </View>
-          )}
+          <View style={styles.valueTracking}>
+            <CommentIcon style={styles.icon} />
+            <Text style={styles.textTracking}>{profile.tracking.star}</Text>
+          </View>
         </View>
       </View>
 
@@ -117,8 +102,8 @@ const styles = StyleSheet.create({
 
   avt: {
     borderRadius: 100,
-    height: 60,
-    width: 60,
+    height: 56,
+    width: 56,
   },
 
   containerContent: {
@@ -130,8 +115,9 @@ const styles = StyleSheet.create({
 
   textName: {
     fontFamily: 'Baloo2-Bold',
-    fontSize: 22,
+    fontSize: 18,
     fontWeight: '500',
+    color: 'black'
   },
   containerTracking: {
     display: 'flex',
@@ -154,8 +140,9 @@ const styles = StyleSheet.create({
 
   textTracking: {
     fontWeight: '300',
-    fontSize: 18,
+    fontSize: 17,
     fontFamily: 'Baloo2-Regular',
+    color: 'black'
   },
 
   sendHeart: {

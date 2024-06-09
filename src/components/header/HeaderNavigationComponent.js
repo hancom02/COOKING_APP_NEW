@@ -35,13 +35,13 @@ const HeaderNavigationComponent = props => {
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => {
-                navigation.navigate('GroupNember');
+                navigation.navigate('GroupMember');
               }}>
               <GroupIcon style={styles.groupIcon} width="32" height="32" />
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => {
-                navigation.navigate('SearchInGroup');
+                navigation.navigate('SearchGroup');
               }}>
               <SearchIcon width="32" height="32" />
             </TouchableOpacity>

@@ -14,7 +14,7 @@ import {useState} from 'react';
 import {FilterItemComponent} from '../../../components/FilterItemComponent';
 import HeaderNavigationComponent from '../../../components/header/HeaderNavigationComponent';
 const SearchGroupMainView = props => {
-  const {navigation, filters, cookBookDatas} = props;
+  const {navigation, filters, recipeDatas} = props;
   const [selectedOptionButton, setSelectedOptionButton] = useState('search');
   const [selectedIdFilter, setSelectedIdFilter] = useState(1);
 
@@ -92,8 +92,8 @@ const SearchGroupMainView = props => {
             <View style={styles.containerTitle}>
               <Text style={styles.textTitle}>RESULT</Text>
             </View>
-            {cookBookDatas.map(cookBook => (
-              <ResultComponent key={cookBook.id} cookBook={cookBook} />
+            {recipeDatas.map(recipe => (
+              <ResultComponent key={recipe.id} recipe={recipe} />
             ))}
           </View>
         </View>

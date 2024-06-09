@@ -14,7 +14,7 @@ import {useState} from 'react';
 import {FilterItemComponent} from '../../../components/FilterItemComponent';
 import {HeaderComponent} from '../../../components/HeaderComponent';
 const SearchMainView = props => {
-  const {navigation, filters, cookBookDatas} = props;
+  const {navigation, filters, recipeDatas} = props;
   const [selectedOptionButton, setSelectedOptionButton] = useState('search');
   const [selectedIdFilter, setSelectedIdFilter] = useState(1);
 
@@ -89,8 +89,8 @@ const SearchMainView = props => {
             <View style={styles.containerTitle}>
               <Text style={styles.textTitle}>RESULT</Text>
             </View>
-            {cookBookDatas.map(cookBook => (
-              <ResultComponent key={cookBook.id} cookBook={cookBook} />
+            {recipeDatas.map(recipe => (
+              <ResultComponent key={recipe.id} recipe={recipe} />
             ))}
           </View>
         </View>
@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
   },
 
   textHeader: {
-    fontSize: 26,
+    fontSize: 22,
     fontFamily: 'Baloo2-Bold',
     marginVertical: 15,
   },
@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
 
   textButton: {
     fontWeight: '400',
-    fontSize: 22,
+    fontSize: 18,
     fontFamily: 'Baloo2-Bold',
   },
 
@@ -171,7 +171,7 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
   },
   textInput: {
-    fontSize: 22,
+    fontSize: 18,
     fontWeight: '400',
     fontFamily: 'Baloo2-Bold',
     flex: 1,
@@ -183,7 +183,7 @@ const styles = StyleSheet.create({
   },
 
   textTitle: {
-    fontSize: 24,
+    fontSize: 20,
     fontWeight: '900',
     fontFamily: 'Baloo2-Bold',
   },

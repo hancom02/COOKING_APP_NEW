@@ -24,45 +24,6 @@ import SearchGroup from './SearchGroup';
 const Stack = createNativeStackNavigator();
 const BottomTab = createBottomTabNavigator();
 
-const bottomScreens = [
-  {
-    screenName: 'Home',
-    screen: Home,
-    iconName: 'home-outline',
-    //isSpecial: false
-
-    //label: string.home,
-  },
-  {
-    screenName: 'Search',
-    screen: Search,
-    iconName: 'search-outline',
-    //isSpecial: false
-    //label: string.order,
-  },
-  {
-    screenName: 'ReacipeAdd',
-    screen: RecipeAdd,
-    iconName: 'add-outline',
-    //isSpecial: true
-    //label: string.order,
-  },
-  {
-    screenName: 'Grocery',
-    screen: Grocery,
-    iconName: 'cart-outline',
-    //isSpecial: false
-    //label: string.order,
-  },
-  {
-    screenName: 'Calendar',
-    screen: Calendar,
-    iconName: 'calendar-outline',
-    //isSpecial: false
-    //label: string.order,
-  },
-];
-
 const TabIconView = ({isFocused, label, icon, index}) => {
   return <View style={appStyle.iconView}>{icon}</View>;
 };
@@ -163,15 +124,24 @@ function MyBottomTab() {
   );
 }
 
+function DetailGroupStack () {
+  return (
+    <Stack.Navigator screenOptions={{headerShown: false}}>
+      <Stack.Screen name="DetailGroup" component={DetailGroup}/>
+      <Stack.Screen name="GroupMember" component={GroupMember}/>
+      <Stack.Screen name="SearchGroup" component={SearchGroup}/>
+    </Stack.Navigator>
+  )
+}
+
 export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
         {/* <Stack.Screen name="Splash" component={Splash} /> */}
         <Stack.Screen name="MyBottomTab" component={MyBottomTab} />
-        <Stack.Screen name="DetailGroup" component={DetailGroup} />
-        <Stack.Screen name="GroupNember" component={GroupMember} />
-        <Stack.Screen name="SearchInGroup" component={SearchGroup} />
+        <Stack.Screen name="DetailGroupStack" component={DetailGroupStack}/>
+
       </Stack.Navigator>
     </NavigationContainer>
   );

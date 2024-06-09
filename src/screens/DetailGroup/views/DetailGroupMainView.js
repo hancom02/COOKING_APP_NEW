@@ -11,8 +11,9 @@ import {
 import HeaderNavigationComponent from '../../../components/header/HeaderNavigationComponent';
 import {ResultComponent} from '../../../components/ResultComponent';
 import EditIcon from '../../../assets/icons/edit.svg';
+
 const DetailGroupMainView = props => {
-  const {navigation, cookBookDatas} = props;
+  const {navigation, groupData, recipeDatas} = props;
   const [joinedGroup, setJoniedGroup] = useState(true);
 
   // Chuyển page thoi nha, có gì xóa cũm được
@@ -28,7 +29,7 @@ const DetailGroupMainView = props => {
           joinedGroup={joinedGroup}
           handleManager={handleManager}
         />
-        <View style={{marginHorizontal: 16}}>
+        <View style={{marginHorizontal: 0}}>
           <View style={styles.containerHeaderInfo}>
             <Image
               source={{
@@ -50,7 +51,7 @@ const DetailGroupMainView = props => {
               justifyContent: 'space-between',
               alignItems: 'center',
             }}>
-            <Text style={styles.nameGroup}>Group for diet food</Text>
+            <Text style={styles.nameGroup}>{groupData.groupName}</Text>
             {isManager && (
               <TouchableOpacity>
                 <EditIcon width="30" height="30" />
@@ -81,12 +82,12 @@ const DetailGroupMainView = props => {
 
           <View style={styles.line}></View>
           <View style={styles.containerResult}>
-            {cookBookDatas &&
-              cookBookDatas.map(cookBook => (
+            {recipeDatas &&
+              recipeDatas.map(recipe => (
                 <ResultComponent
                   navigation={navigation}
-                  key={cookBook.id}
-                  cookBook={cookBook}
+                  key={recipe.id}
+                  recipe={recipe}
                   isManager={isManager}
                 />
               ))}
@@ -122,6 +123,7 @@ const styles = StyleSheet.create({
   },
   nameGroup: {
     marginVertical: 12,
+    marginHorizontal: 16,
     fontSize: 24,
     fontWeight: '600',
     fontFamily: 'Baloo2-ExtraBold',
@@ -141,7 +143,7 @@ const styles = StyleSheet.create({
 
   textButonJoin: {
     color: '#FFFFFF',
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: '700',
     fontFamily: 'Baloo2-SemiBold',
     textAlign: 'center',
@@ -160,6 +162,7 @@ const styles = StyleSheet.create({
 
   containerResult: {
     paddingTop: 20,
+    paddingHorizontal: 18
   },
 });
 export default DetailGroupMainView;

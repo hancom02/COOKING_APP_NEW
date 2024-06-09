@@ -20,7 +20,7 @@ const GroupItemComponent = props => {
       <View>
         <TouchableOpacity
           style={styles.joinButton}
-          onPress={() => navigation.navigate('DetailGroup')}>
+          onPress={() => navigation.navigate('DetailGroupStack')}>
           <Text style={styles.textJoinButton}>
             {selectedAction === 'discover' ? 'Join' : 'See detail'}
           </Text>

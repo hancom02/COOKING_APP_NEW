@@ -1,34 +1,35 @@
-import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {Dimensions, Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {ProfileCardComponent} from './ProfileCardComponent';
 import TrashIcon from '../assets/icons/trash.svg';
 export const ResultComponent = props => {
-  const {navigation, cookBook, isManager} = props;
+  const {navigation, recipe, isManager} = props;
   return (
     <View style={styles.container}>
-      <View style={styles.containerImg}>
+      <TouchableOpacity style={styles.containerImg}>
         <Image
           style={styles.img}
           source={{
-            uri: cookBook.image,
+            uri: recipe.image,
           }}
-          width={400}
+          width={Dimensions.get('window').width - 32}
           height={200}
         />
         {isManager && (
           <TouchableOpacity style={styles.buttonIcon}>
-            <TrashIcon width="35" height="35" />
+            <TrashIcon width="28" height="28" />
           </TouchableOpacity>
         )}
-      </View>
-      <View style={styles.containerTitle}>
+      </TouchableOpacity>
+
+      <TouchableOpacity style={styles.containerTitle}>
         <Text numberOfLines={2} style={styles.title}>
-          {cookBook.name}
+          {recipe.name}
         </Text>
-      </View>
+      </TouchableOpacity>
 
       <ProfileCardComponent
         navigation={navigation}
-        profile={cookBook.profile}
+        profile={recipe.profile}
         isManager={isManager}
       />
 
@@ -40,7 +41,7 @@ export const ResultComponent = props => {
             backgroundColor: '#D1D1D1',
             marginHorizontal: 16,
             marginTop: 8,
-            opacity: 0.5,
+            opacity: 0.3,
           }}></View>
       )}
     </View>
@@ -54,15 +55,19 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: '100%',
     marginBottom: 28,
+    // paddingHorizontal: 16,
     backgroundColor: '#FFFFFF',
+    // backgroundColor: 'pink'
   },
 
   containerImg: {
-    position: 'relative',
+    // position: 'relative',
+    marginHorizontal: 16,
   },
 
   img: {
     borderRadius: 10,
+    // marginHorizontal: 16,
   },
 
   buttonIcon: {
@@ -82,6 +87,8 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: '400',
     fontFamily: 'Baloo2-Bold',
-    marginVertical: 12,
+    marginTop: 12,
+    marginBottom: 4,
+    color: 'black'
   },
 });

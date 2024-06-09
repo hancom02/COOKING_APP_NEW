@@ -37,7 +37,7 @@ const SearchContainer = props => {
     },
   ];
 
-  const cookBookDatas = [
+  const recipeDatas = [
     {
       id: 1,
       image:
@@ -94,7 +94,7 @@ const SearchContainer = props => {
   const propSearch = {
     navigation,
     filters,
-    cookBookDatas,
+    recipeDatas,
   };
 
   return <SearchMainView {...propSearch} />;

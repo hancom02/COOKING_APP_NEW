@@ -37,7 +37,7 @@ const SearchGroupContainer = props => {
     },
   ];
 
-  const cookBookDatas = [
+  const recipeDatas = [
     {
       id: 1,
       image:
@@ -94,7 +94,7 @@ const SearchGroupContainer = props => {
   const propSearch = {
     navigation,
     filters,
-    cookBookDatas,
+    recipeDatas,
   };
 
   return <SearchGroupMainView {...propSearch} />;

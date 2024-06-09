@@ -6,7 +6,15 @@ import DetailGroupMainView from './views/DetailGroupMainView';
 const DetailGroupContainer = props => {
   const {navigation, dispatch} = props;
 
-  const cookBookDatas = [
+  const groupData = {
+    groupName: "Group for diet food",
+    groupImg: "",
+    groupManager: "",
+    groupMembers: [],
+    groupRecipes: recipeDatas
+  }
+
+  const recipeDatas = [
     {
       id: 1,
       image:
@@ -61,7 +69,8 @@ const DetailGroupContainer = props => {
   ];
   const detailGroupProps = {
     navigation,
-    cookBookDatas,
+    groupData,
+    recipeDatas,
   };
 
   return <DetailGroupMainView {...detailGroupProps} />;
