@@ -11,12 +11,15 @@ const AccountMainView = (props) => {
 
     const handleNavProfile = () => {
         console.log("NAV TO PROFILE");
+        navigation.navigate('Profile');
     }
     const handleNavGrocery = () => {
         console.log("NAV TO Grocery");
+        navigation.navigate('Grocery');
     }
     const handleNavCalendar = () => {
         console.log("NAV TO Calendar");
+        navigation.navigate('Calendar');
     }
     const handleNavSetting = () => {
         console.log("NAV TO Setting");

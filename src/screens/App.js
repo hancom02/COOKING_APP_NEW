@@ -22,6 +22,7 @@ import DetailGroup from './DetailGroup';
 import GroupMember from './GroupMember';
 import SearchGroup from './SearchGroup';
 import Account from './Account';
+import Profile from './Profile';
 const Stack = createNativeStackNavigator();
 const BottomTab = createBottomTabNavigator();
 
@@ -142,6 +143,11 @@ export default function App() {
         {/* <Stack.Screen name="Splash" component={Splash} /> */}
         <Stack.Screen name="MyBottomTab" component={MyBottomTab} />
         <Stack.Screen name="DetailGroupStack" component={DetailGroupStack}/>
+        <Stack.Screen name="Profile" component={Profile}/>
+        <Stack.Screen name="Grocery" component={Grocery}/>
+        <Stack.Screen name="Calendar" component={Calendar}/>
+
+
 
       </Stack.Navigator>
     </NavigationContainer>
