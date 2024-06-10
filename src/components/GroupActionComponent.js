@@ -33,6 +33,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 16,
     width: '100%',
+    marginTop: 12
+
   },
 });
 export default GroupActionComponent;
