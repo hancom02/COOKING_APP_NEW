@@ -21,6 +21,7 @@ import Group from './Group';
 import DetailGroup from './DetailGroup';
 import GroupMember from './GroupMember';
 import SearchGroup from './SearchGroup';
+import Account from './Account';
 const Stack = createNativeStackNavigator();
 const BottomTab = createBottomTabNavigator();
 
@@ -106,13 +107,13 @@ function MyBottomTab() {
         }}
       />
       <BottomTab.Screen
-        name="Calendar"
-        component={Calendar}
+        name="Account"
+        component={Account}
         options={{
           tabBarIcon: ({focused}) => {
             return (
               <Ionicons
-                name="calendar-outline"
+                name="person-outline"
                 size={24}
                 color={focused ? 'orange' : 'black'}
               />
